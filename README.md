@@ -74,7 +74,7 @@ Créez, sélectionnez et supprimez différents modèles de prédiction adaptés 
 ## Structure du projet
 
 ```
-projet_4_scala/
+project/
 ├── src/
 │   ├── main/
 │   │   ├── scala/
