@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur - Prédiction de Texte</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/app">Accueil</a></li>
+                    <li><a href="/app/suggestions">Suggestions</a></li>
+                    <li><a href="/app/generator" class="active">Générateur</a></li>
+                    <li><a href="/app/settings">Paramètres</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Section de sélection du modèle -->
+            <section id="model-section">
+                <h2>Sélection de Modèle</h2>
+                <div class="model-select-container">
+                    <div class="input-group">
+                        <label for="model-select">Choisissez un modèle :</label>
+                        <select id="model-select">
+                            <!-- Options remplies dynamiquement -->
+                            <option value="default">Modèle par défaut</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="generator-section">
+                <h2>Génération de Texte</h2>
+                <div class="input-group">
+                    <label for="prefixe-input">Préfixe:</label>
+                    <input type="text" id="prefixe-input" placeholder="alice was beginning">
+                </div>
+
+                <div class="input-group">
+                    <label for="taille-ngram-gen">Taille du n-gramme:</label>
+                    <select id="taille-ngram-gen">
+                        <option value="1">Unigramme</option>
+                        <option value="2">Bigramme</option>
+                        <option value="3" selected>Trigramme</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="nombre-mots">Nombre de mots:</label>
+                    <input type="number" id="nombre-mots" value="50" min="1" max="200">
+                </div>
+
+                <button id="generate-btn">Générer</button>
+
+                <div id="generated-text-container">
+                    <div class="generated-text">
+                        <p>Le texte généré apparaîtra ici</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="generator-explanation">
+                <h2>Comment fonctionne le générateur</h2>
+                <div class="info-content">
+                    <p>Le générateur utilise le modèle de prédiction pour créer du texte à partir d'un préfixe donné.
+                    </p>
+                    <p>Voici le processus de génération :</p>
+                    <ol>
+                        <li>Vous fournissez un préfixe qui servira de point de départ</li>
+                        <li>L'application analyse ce préfixe selon la taille de n-gramme choisie</li>
+                        <li>Pour chaque mot à générer, l'application :</li>
+                        <ul>
+                            <li>Recherche les mots qui pourraient suivre la séquence actuelle</li>
+                            <li>Sélectionne un mot aléatoirement en fonction des probabilités</li>
+                            <li>Ajoute ce mot au texte généré</li>
+                            <li>Utilise la nouvelle séquence pour le mot suivant</li>
+                        </ul>
+                    </ol>
+                    <p>Le résultat est un texte qui imite statistiquement le style des textes utilisés pour
+                        l'entraînement.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/shared.js"></script>
+    <script src="/static/js/generator.js"></script>
+</body>
+
+</html>

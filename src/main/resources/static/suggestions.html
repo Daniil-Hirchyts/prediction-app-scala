@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions - Prédiction de Texte</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/app">Accueil</a></li>
+                    <li><a href="/app/suggestions" class="active">Suggestions</a></li>
+                    <li><a href="/app/generator">Générateur</a></li>
+                    <li><a href="/app/settings">Paramètres</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Section de sélection du modèle -->
+            <section id="model-section">
+                <h2>Sélection de Modèle</h2>
+                <div class="model-select-container">
+                    <div class="input-group">
+                        <label for="model-select">Choisissez un modèle :</label>
+                        <select id="model-select">
+                            <!-- Options remplies dynamiquement -->
+                            <option value="default">Modèle par défaut</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="suggestion-section">
+                <h2>Suggestions de Mots</h2>
+                <div class="input-group">
+                    <label for="texte-input">Entrez du texte:</label>
+                    <input type="text" id="texte-input" placeholder="Commencez à écrire...">
+                </div>
+
+                <div class="input-group">
+                    <label for="taille-ngram">Taille du n-gramme:</label>
+                    <select id="taille-ngram">
+                        <option value="1">Unigramme</option>
+                        <option value="2" selected>Bigramme</option>
+                        <option value="3">Trigramme</option>
+                    </select>
+                </div>
+
+                <div id="suggestions-container">
+                    <div class="suggestions">
+                        <p>Les suggestions apparaîtront ici</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="suggestion-explanation">
+                <h2>Comment fonctionnent les suggestions</h2>
+                <div class="info-content">
+                    <p>Les suggestions sont basées sur l'analyse statistique des mots qui apparaissent fréquemment
+                        ensemble dans les textes utilisés pour entraîner le modèle.</p>
+                    <p>Voici comment l'outil fonctionne :</p>
+                    <ol>
+                        <li>Le texte que vous entrez est analysé pour identifier les derniers mots (selon la taille du
+                            n-gramme choisie)</li>
+                        <li>L'application recherche dans le modèle quels mots suivent le plus souvent cette séquence
+                        </li>
+                        <li>Les mots les plus probables sont présentés comme suggestions, avec leur pourcentage de
+                            probabilité</li>
+                    </ol>
+                    <p>Vous pouvez cliquer sur l'une des suggestions pour l'ajouter à votre texte.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/shared.js"></script>
+    <script src="/static/js/suggestions.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - Prédiction de Texte</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/app">Accueil</a></li>
+                    <li><a href="/app/suggestions">Suggestions</a></li>
+                    <li><a href="/app/generator">Générateur</a></li>
+                    <li><a href="/app/settings" class="active">Paramètres</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Section pour la gestion des modèles -->
+            <section id="models-management" class="full-width">
+                <h2>Gestion des Modèles</h2>
+                <div class="models-list">
+                    <h3>Modèles disponibles</h3>
+                    <div id="models-list-container" class="models-grid">
+                        <p>Chargement des modèles...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section pour l'upload de fichiers -->
+            <section id="upload-section" class="full-width">
+                <h2>Enrichir le Dictionnaire</h2>
+                <div class="upload-info">
+                    <p>Uploadez des fichiers texte (.txt) pour enrichir ou créer un modèle de prédiction.</p>
+                </div>
+
+                <div class="upload-form">
+                    <div class="input-group">
+                        <label for="file-upload">Sélectionnez des fichiers :</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="file-upload" multiple accept=".txt">
+                            <div class="selected-files" id="selected-files">Aucun fichier sélectionné</div>
+                        </div>
+                    </div>
+
+                    <div class="model-action-choice">
+                        <div class="action-type-selector">
+                            <div class="input-group radio-group">
+                                <input type="radio" id="add-to-existing" name="action-type" checked>
+                                <label for="add-to-existing">Ajouter au modèle actuel</label>
+                            </div>
+                            <div class="input-group radio-group">
+                                <input type="radio" id="create-new-model" name="action-type">
+                                <label for="create-new-model">Créer un nouveau modèle</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group new-model-name" style="display: none;">
+                            <label for="new-model-name">Nom du nouveau modèle:</label>
+                            <input type="text" id="new-model-name" placeholder="mon_modele">
+                        </div>
+
+                        <div class="existing-model-info" id="existing-model-info">
+                            <p>Les fichiers seront ajoutés au modèle <span id="selected-model-name">par défaut</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <button id="upload-btn" class="primary-button">Uploader et Apprendre</button>
+
+                    <div id="upload-status"></div>
+                </div>
+            </section>
+
+            <!-- Explications sur les modèles -->
+            <section id="models-explanation" class="full-width">
+                <h2>À propos des modèles de prédiction</h2>
+                <div class="info-content">
+                    <p>Les modèles de prédiction sont créés à partir de textes d'exemple et permettent d'adapter les
+                        suggestions au style et au vocabulaire souhaités.</p>
+
+                    <h3>Comment améliorer vos modèles</h3>
+                    <ul>
+                        <li><strong>Utilisez des textes représentatifs</strong> - Plus les textes correspondent au style
+                            que vous souhaitez reproduire, meilleur sera le modèle.</li>
+                        <li><strong>Quantité de données</strong> - Un bon modèle nécessite généralement plusieurs
+                            dizaines de milliers de mots pour des résultats de qualité.</li>
+                        <li><strong>Cohérence</strong> - Pour de meilleurs résultats, utilisez des textes cohérents en
+                            termes de style, de vocabulaire et de domaine.</li>
+                    </ul>
+
+                    <h3>Formats de fichiers supportés</h3>
+                    <p>Actuellement, l'application prend en charge les fichiers texte (.txt). Assurez-vous que vos
+                        fichiers utilisent l'encodage UTF-8 pour éviter les problèmes de caractères spéciaux.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/shared.js"></script>
+    <script src="/static/js/settings.js"></script>
+</body>
+
+</html>

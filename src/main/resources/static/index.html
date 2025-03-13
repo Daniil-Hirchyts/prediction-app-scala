@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de Texte</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/app" class="active">Accueil</a></li>
+                    <li><a href="/app/suggestions">Suggestions</a></li>
+                    <li><a href="/app/generator">Générateur</a></li>
+                    <li><a href="/app/settings">Paramètres</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Section de sélection du modèle -->
+            <section id="model-section">
+                <h2>Sélection de Modèle</h2>
+                <div class="model-select-container">
+                    <div class="input-group">
+                        <label for="model-select">Choisissez un modèle :</label>
+                        <select id="model-select">
+                            <!-- Options remplies dynamiquement -->
+                            <option value="default">Modèle par défaut</option>
+                        </select>
+                    </div>
+                    <div class="model-info">
+                        <p>Vous pouvez utiliser différents modèles pour adapter les suggestions à votre contexte.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nouvelle section pour l'écriture libre avec auto-suggestion -->
+            <section id="autocomplete-section">
+                <h2>Écriture avec Auto-suggestion</h2>
+                <div class="input-group">
+                    <label for="autocomplete-input">Écrivez votre texte:</label>
+                    <div class="autocomplete-container">
+                        <div class="autocomplete-wrapper">
+                            <span id="autocomplete-text"></span>
+                            <span id="autocomplete-suggestion"></span>
+                        </div>
+                        <textarea id="autocomplete-input" placeholder="Commencez à écrire..."></textarea>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="autocomplete-taille-ngram">Taille du n-gramme:</label>
+                    <select id="autocomplete-taille-ngram">
+                        <option value="1">Unigramme</option>
+                        <option value="2" selected>Bigramme</option>
+                        <option value="3">Trigramme</option>
+                    </select>
+                </div>
+
+                <div class="input-hint">
+                    <p><strong>Astuce:</strong> Appuyez sur <kbd>Tab</kbd> pour accepter une suggestion.</p>
+                </div>
+            </section>
+
+            <section id="app-info">
+                <h2>À propos de cette application</h2>
+                <div class="info-content">
+                    <p>Cette application de prédiction de texte utilise des n-grammes pour suggérer des mots en fonction
+                        de ce que vous écrivez.</p>
+                    <p>Essayez les différentes fonctionnalités :</p>
+                    <ul>
+                        <li><strong>Écriture avec Auto-suggestion</strong> - Écrivez du texte et recevez des suggestions
+                            en temps réel</li>
+                        <li><strong>Suggestions</strong> - Visualisez les mots qui pourraient suivre une séquence donnée
+                        </li>
+                        <li><strong>Générateur</strong> - Créez automatiquement du texte à partir d'un préfixe</li>
+                        <li><strong>Paramètres</strong> - Gérez vos modèles de prédiction et créez-en de nouveaux</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/shared.js"></script>
+    <script src="/static/js/autocomplete.js"></script>
+</body>
+
+</html>
